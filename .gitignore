@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[co]
+*.egg*
+
+# Editor temp files
+*~
+
+# Ignore dot files except those required for the project
+.*
+!.editorconfig
+!.envrc
+!.gitignore
+!.gitkeep
+!.pre-commit-config.yaml
+!.python-version
+
+# data
+*.sqlite3
+
+#docs
+_build/
+
+# directories
+build/
