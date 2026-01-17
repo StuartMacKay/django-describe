@@ -4,6 +4,7 @@ from contextlib import contextmanager
 
 from django.core.management.base import BaseCommand, CommandError
 
+from describe.encoders import DescribeJSONEncoder
 
 
 class Command(BaseCommand):
@@ -29,6 +30,6 @@ class Command(BaseCommand):
 
         try:
             with self.output_stream(output) as out:
-                out.write(json.dumps(metadata))
+                out.write(json.dumps(metadata, cls=DescribeJSONEncoder, indent=4))
         except Exception as e:
             raise CommandError("Unable to generate metadata for project: %s" % e)
