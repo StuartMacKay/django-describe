@@ -5,6 +5,7 @@ from contextlib import contextmanager
 from django.core.management.base import BaseCommand, CommandError
 
 from describe.encoders import DescribeJSONEncoder
+from describe.utils import get_settings
 
 
 class Command(BaseCommand):
@@ -24,11 +25,16 @@ class Command(BaseCommand):
         else:
             yield self.stdout
 
+    @staticmethod
+    def get_metadata(values):
+        get_settings(values)
+
     def handle(self, *args, **options):
         output = options["output"]
         metadata = {}
 
         try:
+            self.get_metadata(metadata)
             with self.output_stream(output) as out:
                 out.write(json.dumps(metadata, cls=DescribeJSONEncoder, indent=4))
         except Exception as e:
