@@ -119,3 +119,11 @@ Now, run the management command to generate the report:
 ```shell
 python manage.py describe --output metadata.json
 ```
+
+## Project Information
+
+* Issues: https://github.com/StuartMacKay/django-describe/issues
+* Repository: https://github.com/StuartMacKay/django-describe/issues
+
+The app is tested on Python 3.12+, and officially supports Django 5.2 LTS,
+and later versions.
