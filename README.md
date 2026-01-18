@@ -20,3 +20,40 @@ redirecting the output, or using the `--output` option:
 ```
 python manage,py describe --output metadata/description.json
 ```
+
+## Output
+django-describe generates the report in JSON format:
+
+```json
+{
+    "apps": [
+        "django.contrib.admin",
+        "django.contrib.auth",
+        "django.contrib.contenttypes",
+        "django.contrib.sessions",
+        "django.contrib.messages",
+        "django.contrib.staticfiles",
+        "describe"
+    ],
+    "models": [
+        "admin.logentry",
+        "auth.permission",
+        "auth.group",
+        "auth.user",
+        "contenttypes.contenttype",
+        "sessions.session"
+    ],
+    "settings": {
+        "ABSOLUTE_URL_OVERRIDES": {},
+        "ADMINS": [],
+        "ALLOWED_HOSTS": [],
+        "APPEND_SLASH": true,
+        "AUTHENTICATION_BACKENDS": [
+            "django.contrib.auth.backends.ModelBackend"
+        ],
+        ...
+    }
+}
+```
+Note: The report normally does not include information from dependencies. They
+were only included as the django-describe app does not include any models.
