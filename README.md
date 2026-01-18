@@ -127,3 +127,7 @@ python manage.py describe --output metadata.json
 
 The app is tested on Python 3.12+, and officially supports Django 5.2 LTS,
 and later versions.
+
+## License
+
+django-describe is released under the terms of the [MIT](https://opensource.org/licenses/MIT) license.
