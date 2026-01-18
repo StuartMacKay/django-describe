@@ -82,3 +82,40 @@ INSTALLED_APPS = [
     "describe",
 ]
 ```
+
+## Demo
+
+If you check out the code from the repository there is a fully functioning,
+but minimal Django site, which you can used to see how the management command
+works.
+
+```shell
+git clone git@github.com:StuartMacKay/django-describe.git
+cd django-describe
+```
+
+Create the virtual environment:
+```shell
+uv venv
+```
+
+Activate it:
+```shell
+source .venv/bin/activate
+```
+
+Install the requirements:
+```shell
+uv sync
+```
+
+Run the database migrations:
+```shell
+python manage.py migrate
+```
+
+Now, run the management command to generate the report:
+
+```shell
+python manage.py describe --output metadata.json
+```
