@@ -23,6 +23,22 @@ class DescribeCommandTestCase(TestCase):
         data = json.loads(output)
         self.assertIsInstance(data, dict)
 
+    def test_describe_includes_apps(self):
+        """Test that describe command includes apps."""
+        out = StringIO()
+        call_command('describe', stdout=out)
+        output = out.getvalue()
+        data = json.loads(output)
+
+        # Verify settings are included
+        self.assertIn('apps', data)
+        self.assertIsInstance(data['apps'], list)
+
+        # Verify the describe app is included
+        self.assertIn('describe', data['apps'])
+        # Verify site-packages are excluded
+        self.assertNotIn('django.contrib.contenttypes', data['apps'])
+
     def test_describe_includes_settings(self):
         """Test that describe command includes Django settings."""
         out = StringIO()
