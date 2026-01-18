@@ -5,7 +5,7 @@ from contextlib import contextmanager
 from django.core.management.base import BaseCommand, CommandError
 
 from describe.encoders import DescribeJSONEncoder
-from describe.utils import get_settings, get_apps
+from describe.utils import get_models, get_settings, get_apps
 
 
 class Command(BaseCommand):
@@ -28,6 +28,7 @@ class Command(BaseCommand):
     @staticmethod
     def get_metadata(values):
         get_apps(values, exclude_site_packages=True)
+        get_models(values, exclude_site_packages=True)
         get_settings(values)
 
     def handle(self, *args, **options):

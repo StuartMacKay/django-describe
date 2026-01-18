@@ -8,3 +8,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added Django settings to the metadata
 - Added Apps to the metadata
+- Added Models to the metadata

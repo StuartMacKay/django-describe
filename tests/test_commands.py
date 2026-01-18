@@ -39,6 +39,22 @@ class DescribeCommandTestCase(TestCase):
         # Verify site-packages are excluded
         self.assertNotIn('django.contrib.contenttypes', data['apps'])
 
+    def test_describe_includes_models(self):
+        """Test that describe command includes models."""
+        out = StringIO()
+        call_command('describe', stdout=out)
+        output = out.getvalue()
+        data = json.loads(output)
+
+        # Verify settings are included
+        self.assertIn('models', data)
+        self.assertIsInstance(data['models'], list)
+
+        # Verify the list of models is empty
+        self.assertListEqual([], data['models'])
+        # Verify models from dependencies are excluded
+        self.assertNotIn('auth.Group', data['models'])
+
     def test_describe_includes_settings(self):
         """Test that describe command includes Django settings."""
         out = StringIO()
