@@ -57,3 +57,28 @@ django-describe generates the report in JSON format:
 ```
 Note: The report normally does not include information from dependencies. They
 were only included as the django-describe app does not include any models.
+
+## Install
+
+You can use either [pip](https://pip.pypa.io/en/stable/) or [uv](https://docs.astral.sh/uv/)
+to download the [package](https://pypi.org/project/django-describe/) from PyPI and
+install it into a virtualenv:
+
+```shell
+pip install django-describe
+```
+
+or:
+
+```shell
+uv add django-describe
+```
+
+Update `INSTALLED_APPS` in your Django setting:
+
+```python
+INSTALLED_APPS = [
+    ...
+    "describe",
+]
+```
